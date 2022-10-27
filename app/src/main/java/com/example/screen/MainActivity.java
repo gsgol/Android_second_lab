@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity
     {
         super.onConfigurationChanged(newConfig);
         Toast.makeText(this, getScreenOrientation(newConfig), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, getScreenTheme(newConfig), Toast.LENGTH_SHORT).show();
     }
     private String getScreenOrientation(Configuration сonfig)
     {
@@ -44,6 +45,14 @@ public class MainActivity extends AppCompatActivity
             return "Портретная ориентация";
         else if (сonfig.orientation == Configuration.ORIENTATION_LANDSCAPE)
             return "Альбомная ориентация";
+        return "";
+    }
+    private String getScreenTheme(Configuration сonfig)
+    {
+        if(сonfig.uiMode== Configuration.UI_MODE_NIGHT_YES + 1)
+            return "Темная тема включена";
+        else if (сonfig.uiMode == Configuration.UI_MODE_NIGHT_NO + 1)
+            return "Темная тема выключена";
         return "";
     }
 
